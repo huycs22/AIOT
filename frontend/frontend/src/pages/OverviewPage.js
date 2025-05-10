@@ -5,7 +5,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
 import axiosInstance from "../components/axiosInstance";
-import PlantPicture from "../assets/plantPicture.png";
 import { jwtDecode } from "jwt-decode";
 
 const ChartComponent = ({ title, data, color }) => (
@@ -36,26 +35,30 @@ const DashboardOverview = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-  
+    console.log("TOKEN", token)
     if (!token) {
       navigate("/login");
       return;
     }
-  
-    let decoded;
-    try {
-      decoded = jwtDecode(token);
-      const now = Date.now() / 1000;
-      if (decoded.exp < now) {
+    
+    if (token == "FACEID"){
+      
+    } else {
+      
+      let decoded;
+      decoded = jwtDecode(token)
+      try {
+        const now = Date.now() / 1000;
+        if (decoded.exp < now) {
+          navigate("/login");
+          return;
+        }
+      } catch (err) {
+        console.error("Token không hợp lệ:", err);
         navigate("/login");
         return;
       }
-    } catch (err) {
-      console.error("Token không hợp lệ:", err);
-      navigate("/login");
-      return;
     }
-  
     const fetchData = async () => {
       try {
         console.log("FETCH")
@@ -143,8 +146,8 @@ const DashboardOverview = () => {
             </div>
           </div>
 
-          <h2 className="text-xl font-bold mt-6">Lastest </h2>
-          <img src={PlantPicture} alt="Cây xanh" className="w-60 h-40 mt-2 rounded shadow" />
+          {/* <h2 className="text-xl font-bold mt-6">Lastest </h2>
+          <img src={PlantPicture} alt="Cây xanh" className="w-60 h-40 mt-2 rounded shadow" /> */}
 
           <h2 className="text-xl font-bold mt-6">Statistics in 24 hours ago</h2>
             <div className="grid grid-cols-2 gap-6">

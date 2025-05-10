@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// const api =  'https://doandanganh.onrender.com/api'
 const api = 'http://localhost:8000/api'
 // Tạo một instance mới của axios
 const axiosInstance = axios.create({

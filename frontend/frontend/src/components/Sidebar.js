@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 const Sidebar = ({ activeItem }) => {
   const items = [
     { label: "Tổng quan thông số", path: "/dashboard/overview", key: "overview", isMain: true },
-    { label: "Thông báo chung", path: "/dashboard/notifications", key: "notifications" },
+    //{ label: "Thông báo chung", path: "/dashboard/notifications", key: "notifications" },
     { label: "Ánh sáng", path: "/dashboard/light", key: "light" },
     { label: "Nhiệt độ", path: "/dashboard/temperature", key: "temperature" },
     { label: "Độ ẩm", path: "/dashboard/humidity", key: "humidity" },

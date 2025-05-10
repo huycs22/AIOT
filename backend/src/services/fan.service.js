@@ -24,6 +24,7 @@ async function getCondition() {
 }
 
 async function getModeCondition() {
+  console.log("GET FAN MODE")
   const mode  = await fetchLatest('fan-mode');
   return mode ;
 }

@@ -6,7 +6,7 @@ async function setLightValue(value) {
 }
 
 async function setLightMode(mode) {
-  console.log("MODE", mode)
+  console.log("MODE", mode) 
   const resp = await adafruit.post('/feeds/light-mode/data', { value: mode });
   return resp.data;
 }

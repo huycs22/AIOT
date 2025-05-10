@@ -36,6 +36,30 @@ const LoginPage = () => {
         }
     };
 
+    const handleFaceLogin = async () => {
+        try {
+            const res = await fetch("http://localhost:5001/api/user/face-login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({}) // Add any payload if needed later
+            });
+
+            const data = await res.json(); // Properly extract the JSON
+            console.log(data)
+            if (data.success) {
+                console.log("SUCCESS")
+                localStorage.setItem("access_token", "FACEID");
+                localStorage.setItem("refresh_token", "FACEID");
+                navigate("/dashboard/overview");
+            } else {
+                setError("Đăng nhập bằng khuôn mặt thất bại");
+            }
+        } catch (err) {
+            setError("Đăng nhập bằng khuôn mặt thất bại");
+        }
+    };
+
+
     return (
         <div className="flex h-screen justify-center items-center">
             <div className="w-full max-w-md flex flex-col justify-center items-center px-8">
@@ -87,6 +111,15 @@ const LoginPage = () => {
                         Đăng nhập
                     </button>
                 </form>
+
+                <button
+                    onClick={handleFaceLogin}
+                    className="w-full mt-2 py-3 bg-green-500 text-white rounded-lg font-semibold hover:opacity-90 transition"
+                >
+                    Đăng nhập bằng Face ID
+                </button>
+
+
 
                 <button onClick={() => navigate("/")} className="mt-4 text-blue-500 hover:underline">
                     Về trang chủ

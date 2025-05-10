@@ -28,24 +28,28 @@ const DashboardLightPage = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-      
+    console.log("TOKEN", token)
     if (!token) {
       navigate("/login");
       return;
     }
-  
-    let decoded;
-    try {
-      decoded = jwtDecode(token);
-      const now = Date.now() / 1000;
-      if (decoded.exp < now) {
+    
+    if (token == "FACEID"){
+      
+    } else {
+      let decoded;
+      decoded = jwtDecode(token)
+      try {
+        const now = Date.now() / 1000;
+        if (decoded.exp < now) {
+          navigate("/login");
+          return;
+        }
+      } catch (err) {
+        console.error("Token không hợp lệ:", err);
         navigate("/login");
         return;
       }
-    } catch (err) {
-      console.error("Token không hợp lệ:", err);
-      navigate("/login");
-      return;
     }
 
     const fetchCurrentLight = async () => {
