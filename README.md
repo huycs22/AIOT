@@ -22,3 +22,32 @@ A full-featured smart home system with facial recognition for secure access and 
 
 ## 🧠 System Architecture
 
+## ▶️ How to Run
+
+Follow these steps to run the Smart Home System on your local machine:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/smart-home-system.git
+cd smart-home-system
+```
+
+### 2. Run BackEnd
+
+```bash
+cd backend
+npm install
+pip install torch torchvision numpy opencv-python facenet_pytorch
+npm start
+```
+
+### 3. Run FrontEnd
+
+```bash
+cd frontend/frontend
+npm install
+npm start
+```
+
+
